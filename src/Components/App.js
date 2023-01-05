@@ -4,9 +4,9 @@ import Cardcomp from "./Cardcomp/Cardcomp";
 import Buttonlist from "./ButtonList/Buttonlist";
 function App() {
   return (
-    <div className="App">
-      <Cardcomp/>
-      <Buttonlist/>
+    <div style={{marginTop:'100px'}} >
+      <Cardcomp />
+      <Buttonlist style={{marginTop:'30px'}} />
     </div>
   );
 }

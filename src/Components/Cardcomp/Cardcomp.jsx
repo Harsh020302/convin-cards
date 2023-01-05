@@ -1,29 +1,52 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
+
 import Card from '@mui/material/Card';
-
 import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
-
 import Typography from '@mui/material/Typography';
+import { useGetUserInfoQuery } from '../../Services/CardApi';
 
 const Cardcomp = () => {
+  const {button} = useSelector((state) => state.buttonClicked);
+  const { data,error } = useGetUserInfoQuery(button);
+  const UserData = data?.data;
+  if(error){
+    return(
+      <Card sx={{height:'250px', width:'400px',margin:'auto',display:'flex',justifyContent:'center',alignItems:'center'}}>
+        <Typography variant='h3' color="#ccccca">Click any Button</Typography>
+      </Card>
+    )
+  }
   return (
-    <Card sx={{height:'250px', width:'400px',display:'flex',flexDirection:'row',margin:'100px' }}>
+    <Card sx={{height:'250px', width:'400px',display:'flex',flexDirection:'row',margin:'auto'}}>
+
       <CardContent sx={{maxWidth:'200px'}}>
-        <Typography gutterBottom variant="h5" component="div">
-          Lizard
+
+        <Typography gutterBottom variant="h5" component="div" sx={{marginBottom:'30px',fontWeight:'Bold'}}>
+          {UserData?.first_name}
         </Typography>
-        <Typography variant="body2" color="text.secondary">
-          First Name : Harsha <br/>
-          <br/>
-          Last Name : Vardhan <br/>
-          <br/>
-          Email : harsha020302@gmail.com 
+
+        <Typography variant="body2" color="text.secondary" gutterBottom>
+          First Name : {UserData?.first_name } 
+          
         </Typography>
+        <Typography variant="body2" color="text.secondary" gutterBottom>
+          
+          Last Name : {UserData?.last_name } 
+
+        </Typography>
+
+        <Typography variant="body2" color="text.secondary" gutterBottom>
+
+          Email :  {UserData?.email}
+        </Typography>
+
       </CardContent>
+
       <div>
-        <img src='https://reqres.in/img/faces/2-image.jpg' style={{height:'100%',width:'100%'}}/>
+        <img src={UserData?.avatar} style={{height:'100%',width:'100%'}} />
       </div>
+
     </Card>
   )
 }

@@ -14,9 +14,6 @@ const cardSlice = createSlice({
         setusersData: (state,action) => {
             state.usersData = action.payload;
         },
-        setPage: (state,action)=>{
-            state.page = action.payload;
-        }
     }
 });
 

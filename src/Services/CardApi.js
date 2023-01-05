@@ -7,10 +7,7 @@ export const cardApi = createApi({
 
         getUserInfo: builder.query({
             query: (id) => {
-                if(id!== '0'){
-                    return `/${id}`
-                }
-                return `/0`
+                return `/${id}`
             }
         })
     })

@@ -1,9 +1,12 @@
 import React from "react";
+import Cardcomp from "./Cardcomp/Cardcomp";
 
+import Buttonlist from "./ButtonList/Buttonlist";
 function App() {
   return (
     <div className="App">
-      <h1>Hello</h1>
+      <Cardcomp/>
+      <Buttonlist/>
     </div>
   );
 }
